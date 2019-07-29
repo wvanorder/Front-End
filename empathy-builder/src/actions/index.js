@@ -5,6 +5,9 @@ export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
 
+//Used an old format to explain redux thunk to newer cohorts in my BUILD WEEK TEAM. THIS CODE IS FROM A PREVIOUS PROJECT.
+//BUT WAS USED PURELY FOR EDUCATIONAL PURPOSES TO EXPLAIN MIDDLEWARE
+
 
 export const login = (user, creds) => dispatch => {
     dispatch({ type: LOGIN_START });

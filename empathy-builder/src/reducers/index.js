@@ -3,7 +3,7 @@ import {
     LOGIN_SUCCESS,
 } from '../actions';
 
-
+//DUMMY DATA used to explain Store and action stuff to teammates
 
 const initialState = {
     user: '',
