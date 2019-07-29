@@ -92,4 +92,10 @@ const SignUp = props => {
     )
 };
 
+
+const mapStateToProps = state => {
+    return{
+        weather: state.weather
+    }
+}
 export default SignUp;

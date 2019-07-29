@@ -32,6 +32,7 @@ export const LoginHeader = styled.div`
     }
     p{
         width: 80%;
+        font-size: 1.2rem;
     }
 `
 
@@ -41,14 +42,15 @@ export const FormContainer = styled.div`
     justify-content: space-evenly;
 
     button{
-        width: 50px;
+        width: 60px;
         border-radius: 8px;
-        background-color: #59B7FF;
+        background-color: #66ccda;
         margin-left: 15px;
         margin-bottom: 10px;
+        color: #ededed;
 
         &:hover{
-            background-color: #86CAFF;
+            background-color: #9ddee7;
             transition-duration: 0.2s;
         }
     }
