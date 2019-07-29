@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const NavContainer = styled.div`
     width: 100%;
-    height: 50px;
+    height: 75px;
     background-color: #602350;
     position: fixed;
     z-index: 10000;
@@ -12,7 +12,7 @@ const NavContainer = styled.div`
 
 const NavigationBar = styled.div`
     width: 70vw;
-    height: 50px;
+    height: 75px;
     line-height: 50px;
     display: flex;
     flex-flow: row nowrap;
@@ -24,7 +24,7 @@ const NavigationBar = styled.div`
 
 const NavLogo = styled.div`
     font-weight: bold;
-    font-size: 1.7rem;
+    font-size: 2.7rem;
     color: #EDEDED;
     cursor: default;
 `
@@ -33,6 +33,7 @@ const Links = styled.div`
     .active{
         font-weight: bold;
         text-decoration: underline;
+        color: #f9bbb1;
     }
 
     a{
@@ -48,6 +49,10 @@ const Links = styled.div`
 `
 
 const NavBar = () => {
+
+    const logOut = () => {
+        return localStorage.clear();
+      };
     
     return(
         <NavContainer>
@@ -55,13 +60,16 @@ const NavBar = () => {
                 <NavLogo>Empathy Builder</NavLogo>
                 <Links>
                     {localStorage.getItem('jwt') ? (
-                        <NavLink to='/login'>
-                            Log Out
-                        </NavLink>
+                        <div>
+                            <NavLink to='/login' onClick={logOut}>Log Out</NavLink>
+                            <NavLink to="/calculator">Calculator</NavLink>
+                        </div>
+                        
                     ) : (
                         <div>
                             <NavLink to='/login'>Log In</NavLink>
                             <NavLink to='/sign-up'>Sign Up</NavLink>
+                            <NavLink to="/calculator">Calculator</NavLink>
                         </div>
                     )}
                 </Links>
