@@ -67,9 +67,9 @@ const NavBar = () => {
                         
                     ) : (
                         <div>
+                            <NavLink to="/calculator">Calculator</NavLink>
                             <NavLink to='/login'>Log In</NavLink>
                             <NavLink to='/sign-up'>Sign Up</NavLink>
-                            <NavLink to="/calculator">Calculator</NavLink>
                         </div>
                     )}
                 </Links>

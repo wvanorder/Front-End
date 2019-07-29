@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+
+
 import { PageContainer, 
         LoginContainer, 
         LoginHeader, 
@@ -9,6 +12,10 @@ import { PageContainer,
 
 
 const Login = props => {
+
+    const LogInStuff = () => {
+        props.login()
+    }
     
     return(
         <PageContainer>
@@ -42,4 +49,16 @@ const Login = props => {
     );
 };
 
-export default Login;
+const mapStateToProps = state => {
+    return{
+        user: state.user,
+        loggedIn: state.loggedIn,
+        error: state.error,
+        isLoading: state.isLoading
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    {} 
+)(Login);
