@@ -53,17 +53,21 @@ const Column = styled.div`
 
 const Calculator = props => {
 
-    const [recurringTotal, setRecurringTotal] = useState(0);
-    const [relocationTotal, setRelocationTotal] = useState(0);
+    const [recurringTotal, setRecurringTotal] = useState([
+        { category: "foo", sum: 0 }
+        { category: "bar", sum: 0 }
+        }
+    ]);
+    const [relocationTotal, setRelocationTotal] = useState([]);
 
-    const updateRecurringTotal = (amount) => {
-       console.log(amount);
-        setRecurringTotal();
+    const updateRecurringTotal = (item) => {
+        const recurringCopy = [...recurringTotal];
+        const categoryIndex = recurringCopy.findIndex(somehow select object with matching category and update that objects sum value);
+        setRecurringTotal(recurringCopy) 
     }
 
-    const updateRelocationTotal = (amount) => {
-        console.log(amount);
-        setRelocationTotal();
+    const updateRelocationTotal = (item) => {
+        console.log(item)
     }
 
    
@@ -71,7 +75,7 @@ const Calculator = props => {
     return(
         <CalcPage>
             <Results>
-                <h2>Total Cost for Relocation: ${recurringTotal + relocationTotal}</h2>
+                <h2>Total Cost for Relocation: </h2>
             </Results>
         
             <CalculatorHolder>
@@ -80,14 +84,14 @@ const Calculator = props => {
                     {personalCosts.map(category => {
                         return <LineItem category={category} updateRecurringTotal={updateRecurringTotal} />
                     })}
-                    <h3>Total Recurring Expenses: ${recurringTotal}</h3>
+                    <h3>Total Recurring Expenses: $</h3>
                 </Column>
                 <Column>
                     <h2>My Relocation Expenses</h2>
                     {relocationCosts.map(category => {
                         return <LineItem category={category} updateRelocationTotal={updateRelocationTotal} />
                     })}
-                    <h3>Total Relocation Expenses: ${relocationTotal}</h3>
+                    <h3>Total Relocation Expenses: $</h3>
                 </Column>
             </CalculatorHolder>
         </CalcPage>

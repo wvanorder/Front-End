@@ -42,7 +42,7 @@ const LineItem = props => {
 
     const handleRelocationOk = e => {
     e.preventDefault();
-    props.updateRelocationTotal({[props.category.name]: categorySum});
+    props.updateRecurringTotal({[props.category.name]: categorySum})
     setModalVisible(false);
     };
 
