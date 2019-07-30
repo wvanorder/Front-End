@@ -9,15 +9,15 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 //BUT WAS USED PURELY FOR EDUCATIONAL PURPOSES TO EXPLAIN MIDDLEWARE
 
 
-export const login = (user, creds) => dispatch => {
+export const login = (creds) => dispatch => {
     dispatch({ type: LOGIN_START });
     return axiosWithAuth()
-        .post(`/auth/${user}/login`, creds)
+        .post(`auth/login`, creds)
         .then(res => {
             console.log(res.data);
-            localStorage.setItem('jwt', res.data.token);
-            dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-            return true;
+            // localStorage.setItem('jwt', res.data.token);
+            // dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+            // return true;
         })
         .catch(err => console.log(`I can't let you do that, StarFox.`, err));
 };

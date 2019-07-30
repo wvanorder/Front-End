@@ -29,6 +29,7 @@ const InputLine = styled.div`
 
 
 const LineItem = props => {
+    console.log(props.recurringTotal);
 
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -38,10 +39,17 @@ const LineItem = props => {
 
 
 
-    const handleOk = e => {
-        console.log(e);
+    const handleRecurringOk = e => {
+        e.preventDefault();
+        props.updateRecurringTotal(categorySum);
         setModalVisible(false);
       };
+
+    const handleRelocationOk = e => {
+    e.preventDefault();
+    props.updateRelocationTotal(categorySum);
+    setModalVisible(false);
+    };
 
     const handleCancel = e => {
         console.log(e);
@@ -57,21 +65,15 @@ const LineItem = props => {
     }
 
     const Sum = obj => {
-        console.log('should run first');
         return Object.keys(obj).reduce((sum, key) => sum+parseFloat(obj[key] || 0), 0);
         
     };
     const categorySum = Sum(categoryCosts);
-
-    if(props.relocationTotal) {
-        console.log('Relocation total: ', props.relocationTotal)
-    } else if(props.recurringTotal) {
-        console.log('recurring total: ', props.recurringTotal)
-    }
-
+    
     
     
     return(
+        
         <>
             <Item onClick={() => setModalVisible(!modalVisible)}>
                 <h2>{props.category.name}</h2>
@@ -80,7 +82,7 @@ const LineItem = props => {
             <Modal
             title={props.category.name}
             visible={modalVisible}
-            onOk={handleOk}
+            onOk={e => {props.updateRecurringTotal ? handleRecurringOk(e) : handleRelocationOk(e)}}
             onCancel={handleCancel}
             >
             <h3>Things to consider: </h3>
