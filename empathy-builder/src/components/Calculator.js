@@ -1,9 +1,9 @@
-import React, { useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import LineItem from './LineItem';
 
-import { recurringCosts } from '../cost data';
+import { personalCosts, relocationCosts } from '../cost data';
 
 
 
@@ -52,6 +52,10 @@ const Column = styled.div`
 
 
 const Calculator = props => {
+
+    const [recurringTotal, setRecurringTotal] = useState(0);
+    const [relocationTotal, setRelocationTotal] = useState(0);
+
     return(
         <CalcPage>
             <Results>
@@ -60,13 +64,18 @@ const Calculator = props => {
         
             <CalculatorHolder>
                 <Column>
-                    <h2>Recurring Expenses</h2>
-                    {recurringCosts.map(category => {
-                        return <LineItem category={category}/>
+                    <h2>My Recurring Expenses</h2>
+                    {personalCosts.map(category => {
+                        return <LineItem category={category} recurringTotal={recurringTotal} setRecurringTotal={setRecurringTotal} />
                     })}
+                    <h3>Total Recurring Expenses: </h3>
                 </Column>
                 <Column>
-                    <h2>Relocation Expenses</h2>
+                    <h2>My Relocation Expenses</h2>
+                    {relocationCosts.map(category => {
+                        return <LineItem category={category} relocationTotal={relocationTotal} setRelocationTotal={setRelocationTotal} />
+                    })}
+                    <h3>Total Relocation Expenses: </h3>
                 </Column>
             </CalculatorHolder>
         </CalcPage>

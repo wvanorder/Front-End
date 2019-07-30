@@ -1,4 +1,4 @@
-export const recurringCosts = [
+export const personalCosts = [
     {
         name: "Food",
         categories: ['Groceries', 'Restaurants/Takeout']
@@ -9,7 +9,7 @@ export const recurringCosts = [
     },
     {
         name: "Health Care",
-        categories: ['insurance costs', 'copays', 'rx and medical equipment'],
+        categories: ['insurance costs', 'copays', 'rx and medical equipment', 'therapy', 'child care'],
     },
     {
         name: 'Debt',
@@ -26,5 +26,28 @@ export const recurringCosts = [
     {
         name: "Clothing",
         categories: ['adults', 'children', 'cleaning/laundry']
+    }
+];
+
+export const relocationCosts = [
+    {
+        name: "Work Life",
+        categories: ["income loss", "job/skills training", "misc. fees"]
+    },
+    {
+        name: "Lodging",
+        categories: ["hotel rate", "expected length of stay"]
+    },
+    {
+        name: "New home",
+        categories: ["housing deposit", "utilities deposits", "rent", "misc. fees"]
+    },
+    {
+        name: "Transportation",
+        categories: ["car rental", "moving truck rental", "gas", "airline/bus tickets"]
+    },
+    {
+        name: "Miscellaneous Expenses",
+        categories: ["storage Unit", "furniture/appliances", "pet expenses", "cell phone disconnection fees", "additional security measures"]
     }
 ];
