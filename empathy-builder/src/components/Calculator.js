@@ -56,26 +56,38 @@ const Calculator = props => {
     const [recurringTotal, setRecurringTotal] = useState(0);
     const [relocationTotal, setRelocationTotal] = useState(0);
 
+    const updateRecurringTotal = (amount) => {
+        let newSum = recurringTotal + amount;
+        setRecurringTotal(newSum);
+    }
+
+    const updateRelocationTotal = amount => {
+        let newSum = relocationTotal + amount;
+        setRelocationTotal(newSum);
+    }
+
+
+
     return(
         <CalcPage>
             <Results>
-                <h2>Total Cost for Relocation: </h2>
+                <h2>Total Cost for Relocation: ${recurringTotal + relocationTotal}</h2>
             </Results>
         
             <CalculatorHolder>
                 <Column>
                     <h2>My Recurring Expenses</h2>
                     {personalCosts.map(category => {
-                        return <LineItem category={category} recurringTotal={recurringTotal} setRecurringTotal={setRecurringTotal} />
+                        return <LineItem category={category} updateRecurringTotal={updateRecurringTotal} />
                     })}
-                    <h3>Total Recurring Expenses: </h3>
+                    <h3>Total Recurring Expenses: ${recurringTotal}</h3>
                 </Column>
                 <Column>
                     <h2>My Relocation Expenses</h2>
                     {relocationCosts.map(category => {
-                        return <LineItem category={category} relocationTotal={relocationTotal} setRelocationTotal={setRelocationTotal} />
+                        return <LineItem category={category} updateRelocationTotal={updateRelocationTotal} />
                     })}
-                    <h3>Total Relocation Expenses: </h3>
+                    <h3>Total Relocation Expenses: ${relocationTotal}</h3>
                 </Column>
             </CalculatorHolder>
         </CalcPage>
