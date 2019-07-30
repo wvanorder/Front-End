@@ -71,21 +71,21 @@ const Calculator = props => {
     return(
         <CalcPage>
             <Results>
-                <h2>Total Cost for Relocation: ${recurringTotal + relocationTotal}</h2>
+                <h2>Total Cost for Relocation: ${recurringTotal + relocationTotal} </h2>
             </Results>
         
             <CalculatorHolder>
                 <Column>
                     <h2>My Recurring Expenses</h2>
                     {personalCosts.map(category => {
-                        return <LineItem category={category} updateRecurringTotal={updateRecurringTotal} />
+                        return <LineItem category={category} updateRecurringTotal={updateRecurringTotal} sum={0} />
                     })}
                     <h3>Total Recurring Expenses: ${recurringTotal}</h3>
                 </Column>
                 <Column>
                     <h2>My Relocation Expenses</h2>
                     {relocationCosts.map(category => {
-                        return <LineItem category={category} updateRelocationTotal={updateRelocationTotal} />
+                        return <LineItem category={category} updateRelocationTotal={updateRelocationTotal} sum={0} />
                     })}
                     <h3>Total Relocation Expenses: ${relocationTotal}</h3>
                 </Column>

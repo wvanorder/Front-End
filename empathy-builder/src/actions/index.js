@@ -15,9 +15,9 @@ export const login = (creds) => dispatch => {
         .post(`auth/login`, creds)
         .then(res => {
             console.log(res.data);
-            // localStorage.setItem('jwt', res.data.token);
-            // dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-            // return true;
+            localStorage.setItem('jwt', res.data.token);
+            dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+            return true;
         })
         .catch(err => console.log(`I can't let you do that, StarFox.`, err));
 };
