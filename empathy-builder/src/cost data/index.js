@@ -39,7 +39,7 @@ export const relocationCosts = [
         categories: ["hotel rate", "expected length of stay"]
     },
     {
-        name: "New home",
+        name: "New Home",
         categories: ["housing deposit", "utilities deposits", "rent", "misc. fees"]
     },
     {
