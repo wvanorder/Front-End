@@ -57,16 +57,16 @@ const Calculator = props => {
     const [relocationTotal, setRelocationTotal] = useState(0);
 
     const updateRecurringTotal = (amount) => {
-        let newSum = recurringTotal + amount;
-        setRecurringTotal(newSum);
+       console.log(amount);
+        setRecurringTotal();
     }
 
-    const updateRelocationTotal = amount => {
-        let newSum = relocationTotal + amount;
-        setRelocationTotal(newSum);
+    const updateRelocationTotal = (amount) => {
+        console.log(amount);
+        setRelocationTotal();
     }
 
-
+   
 
     return(
         <CalcPage>

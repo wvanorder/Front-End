@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Modal } from 'antd';
 import styled from 'styled-components';
 
-import 'antd/dist/antd.css';
 
 const Item = styled.div`
     width: 90%;
@@ -29,30 +28,25 @@ const InputLine = styled.div`
 
 
 const LineItem = props => {
-    console.log(props.recurringTotal);
 
     const [modalVisible, setModalVisible] = useState(false);
 
     const [categoryCosts, setCategoryCosts] = useState({});
 
-  
-
-
 
     const handleRecurringOk = e => {
-        e.preventDefault();
-        props.updateRecurringTotal(categorySum);
-        setModalVisible(false);
+    e.preventDefault();
+    props.updateRecurringTotal({[props.category.name]: categorySum})
+    setModalVisible(false);
       };
 
     const handleRelocationOk = e => {
     e.preventDefault();
-    props.updateRelocationTotal(categorySum);
+    props.updateRelocationTotal({[props.category.name]: categorySum});
     setModalVisible(false);
     };
 
     const handleCancel = e => {
-        console.log(e);
         setModalVisible(false);
       };
 
@@ -66,11 +60,9 @@ const LineItem = props => {
 
     const Sum = obj => {
         return Object.keys(obj).reduce((sum, key) => sum+parseFloat(obj[key] || 0), 0);
-        
     };
-    const categorySum = Sum(categoryCosts);
-    
-    
+
+    const categorySum = Sum(categoryCosts);    
     
     return(
         
