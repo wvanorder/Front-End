@@ -58,6 +58,7 @@ const Calculator = props => {
 
     const [recurringTotal, setRecurringTotal] = useState(0);
     const [relocationTotal, setRelocationTotal] = useState(0);
+    
     const [recurringCategoryTotals, setRecurringCategoryTotals] = useState({
         Food: 0,
         Transportation: 0,
@@ -70,7 +71,6 @@ const Calculator = props => {
 
     const [relocationCategoryTotals, setRelocationCategoryTotals] = useState({
         Career: 0,
-        Lodging: 0,
         Housing: 0,
         Transportation: 0,
         Miscellaneous: 0,
@@ -88,7 +88,10 @@ const Calculator = props => {
 
     const updateRelocationTotal = (item) => {
         console.log(item)
-    }
+        const recurringCopy = [...recurringTotal];
+        //const categoryIndex = recurringCopy.findIndex(somehow select object with matching category and update that objects sum value);
+        setRelocationTotal(recurringCopy) 
+    }	    
 
  
     return(
@@ -102,7 +105,7 @@ const Calculator = props => {
                 <Column>
                     <h2>My Recurring Expenses</h2>
                     {personalCosts.map(category => {
-                        return <LineItem key={category.name} category={category} updateRecurringTotal={updateRecurringTotal} 
+                        return <LineItem key={category.name} categoryTotals={recurringCategoryTotals} setCategoryTotals={setRecurringCategoryTotals} category={category} updateRecurringTotal={updateRecurringTotal} 
                             />
                     })}
                     <h3>Total Recurring Expenses: $</h3>
@@ -110,7 +113,7 @@ const Calculator = props => {
                 <Column>
                     <h2>My Relocation Expenses</h2>
                     {relocationCosts.map(category => {
-                        return <LineItem key={category.name} category={category} updateRelocationTotal={updateRelocationTotal} 
+                        return <LineItem key={category.name} categoryTotals={relocationCategoryTotals} setCategoryTotals={setRelocationCategoryTotals} category={category} updateRelocationTotal={updateRelocationTotal} 
                             />
                     })}
                     <h3>Total Relocation Expenses: ${Math.floor(relocationTotal)}</h3>
