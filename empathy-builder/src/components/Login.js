@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
@@ -15,10 +15,26 @@ import { PageContainer,
 
 const Login = props => {
 
-    const LogInStuff = () => {
-        props.login()
-    }
+    const [user, setUser] = useState({username: '', password: ''})
+
+    const handleChange = e => {
+        e.preventDefault();
+        setUser({
+            ...user,
+            [e.target.name] : e.target.value
+        })
+      };
     
+    const login = e => {
+        e.preventDefault();
+        props.login(user).then(res => {
+            if(res) {
+               return props.history.push('/calculator');
+            }
+        });
+    };
+
+
     return(
         <PageContainer>
             <LoginContainer>
@@ -26,7 +42,7 @@ const Login = props => {
                     <h1> Log In</h1>
                 </LoginHeader>
                 <FormContainer>
-                    <form>
+                    <form onSubmit={e => login(e)}>
                         <InputContainer>
                             <label>Username</label>
                             <input
@@ -34,6 +50,8 @@ const Login = props => {
                                 placeholder="username"
                                 required="fill this out!"
                                 name="username"
+                                value={user.username}
+                                onChange={handleChange}
                             />
                             <label>Password</label>
                             <input
@@ -41,10 +59,12 @@ const Login = props => {
                                 placeholder="password"
                                 required="fill this out!"
                                 name="password"
+                                value={user.password}
+                                onChange={handleChange}
                             />
                         </InputContainer>
                     </form>
-                    <button className="Login-button">Log In</button>
+                    <button className="Login-button" onClick={e => login(e)}>Log In</button>
                 </FormContainer>
             </LoginContainer>
         </PageContainer>
@@ -56,11 +76,11 @@ const mapStateToProps = state => {
         user: state.user,
         loggedIn: state.loggedIn,
         error: state.error,
-        isLoading: state.isLoading
+        isLoading: state.isLoading,
     };
 };
 
 export default connect(
     mapStateToProps,
-    {} 
+    { login } 
 )(Login);

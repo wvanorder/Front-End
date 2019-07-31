@@ -52,46 +52,69 @@ const Column = styled.div`
 
 
 const Calculator = props => {
+    
+    
 
-    const [recurringTotal, setRecurringTotal] = useState([
-        { category: "foo", sum: 0 }
-        { category: "bar", sum: 0 }
-        }
-    ]);
-    const [relocationTotal, setRelocationTotal] = useState([]);
 
-    const updateRecurringTotal = (item) => {
-        const recurringCopy = [...recurringTotal];
-        const categoryIndex = recurringCopy.findIndex(somehow select object with matching category and update that objects sum value);
-        setRecurringTotal(recurringCopy) 
+    const [recurringTotal, setRecurringTotal] = useState(0);
+    const [relocationTotal, setRelocationTotal] = useState(0);
+    const [recurringCategoryTotals, setRecurringCategoryTotals] = useState({
+        Food: 0,
+        Transportation: 0,
+        Health: 0,
+        Debt: 0,
+        Housing: 0,
+        Utilities: 0,
+        Clothing: 0
+    });
+
+    const [relocationCategoryTotals, setRelocationCategoryTotals] = useState({
+        Career: 0,
+        Lodging: 0,
+        Housing: 0,
+        Transportation: 0,
+        Miscellaneous: 0,
+    });
+
+    
+
+
+
+    const updateRecurringTotal = (amount) => {
+        let newSum = recurringTotal + amount;
+        setRecurringTotal(newSum);
+
     }
 
     const updateRelocationTotal = (item) => {
         console.log(item)
     }
 
-   
-
+ 
     return(
         <CalcPage>
             <Results>
-                <h2>Total Cost for Relocation: </h2>
+                <h2>Total Cost for Relocation: ${recurringTotal + relocationTotal} </h2>
+
             </Results>
         
             <CalculatorHolder>
                 <Column>
                     <h2>My Recurring Expenses</h2>
                     {personalCosts.map(category => {
-                        return <LineItem category={category} updateRecurringTotal={updateRecurringTotal} />
+                        return <LineItem key={category.name} category={category} updateRecurringTotal={updateRecurringTotal} 
+                            />
                     })}
                     <h3>Total Recurring Expenses: $</h3>
                 </Column>
                 <Column>
                     <h2>My Relocation Expenses</h2>
                     {relocationCosts.map(category => {
-                        return <LineItem category={category} updateRelocationTotal={updateRelocationTotal} />
+                        return <LineItem key={category.name} category={category} updateRelocationTotal={updateRelocationTotal} 
+                            />
                     })}
-                    <h3>Total Relocation Expenses: $</h3>
+                    <h3>Total Relocation Expenses: ${Math.floor(relocationTotal)}</h3>
+
                 </Column>
             </CalculatorHolder>
         </CalcPage>
