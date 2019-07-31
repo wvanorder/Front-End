@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Modal } from 'antd';
 import styled from 'styled-components';
 
-import 'antd/dist/antd.css';
 
 const Item = styled.div`
     width: 90%;
@@ -34,24 +33,12 @@ const LineItem = props => {
 
     const [categoryCosts, setCategoryCosts] = useState({});
 
-  
-    
-
-
-    const handleRecurringOk = (e) => {
+    const handleModal = (e) => {
         e.preventDefault();
-        props.updateRecurringTotal(categorySum);
         setModalVisible(false);
       };
 
-    const handleRelocationOk = e => {
-    e.preventDefault();
-    props.updateRelocationTotal(categorySum);
-    setModalVisible(false);
-    };
-
     const handleCancel = e => {
-        console.log(e);
         setModalVisible(false);
       };
 
@@ -65,13 +52,19 @@ const LineItem = props => {
 
     const Sum = obj => {
         return Object.keys(obj).reduce((sum, key) => sum+parseFloat(obj[key] || 0), 0);
-        
     };
-    const categorySum = Sum(categoryCosts);
+
+    const categorySum = Sum(categoryCosts);    
     
-    
-    
-    
+    useEffect(() => {
+        props.setCategoryTotals({
+            ...props.categoryTotals,
+            [props.category.name]: categorySum
+        })
+        }, [categorySum])
+
+    console.log(props)
+
     return(
         
         <>
@@ -82,11 +75,12 @@ const LineItem = props => {
             <Modal
             title={props.category.name}
             visible={modalVisible}
-            onOk={e => {props.updateRecurringTotal ? handleRecurringOk(e) : handleRelocationOk(e)}}
+            onOk={e => handleModal(e)}
             onCancel={handleCancel}
             >
             <h3>Things to consider: </h3>
                 {props.category.categories.map(category => {
+                    
                 return(
                     <InputLine key={category}>
                         <p>{category}</p>
