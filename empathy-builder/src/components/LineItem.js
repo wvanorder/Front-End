@@ -33,18 +33,10 @@ const LineItem = props => {
 
     const [categoryCosts, setCategoryCosts] = useState({});
 
-    const handleRecurringOk = (e) => {
+    const handleModal = (e) => {
         e.preventDefault();
-        props.updateRecurringTotal({[props.category.name]: categorySum})
         setModalVisible(false);
-
       };
-
-    const handleRelocationOk = e => {
-    e.preventDefault();
-    props.updateRelocationTotal({[props.category.name]: categorySum})
-    setModalVisible(false);
-    };
 
     const handleCancel = e => {
         setModalVisible(false);
@@ -70,7 +62,7 @@ const LineItem = props => {
             [props.category.name]: categorySum
         })
         }, [categorySum])
-        
+
     console.log(props)
 
     return(
@@ -83,7 +75,7 @@ const LineItem = props => {
             <Modal
             title={props.category.name}
             visible={modalVisible}
-            onOk={e => {props.updateRecurringTotal ? handleRecurringOk(e) : handleRelocationOk(e)}}
+            onOk={e => handleModal(e)}
             onCancel={handleCancel}
             >
             <h3>Things to consider: </h3>
