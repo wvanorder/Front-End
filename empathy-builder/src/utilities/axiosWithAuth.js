@@ -7,6 +7,6 @@ export const axiosWithAuth = () => {
         headers: {
             Authorization: token
         },
-        baseURL: `NEED A URL`
+        baseURL: `https://backend-buildweek-web22-mw.herokuapp.com/api/`
     })
 }

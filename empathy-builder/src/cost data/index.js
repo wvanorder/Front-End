@@ -8,7 +8,7 @@ export const personalCosts = [
         categories: ['car insurance', 'car payment', 'gas', 'parking', 'public transit costs'],
     },
     {
-        name: "Health Care",
+        name: "Health",
         categories: ['insurance costs', 'copays', 'rx and medical equipment', 'therapy', 'child care'],
     },
     {
@@ -31,23 +31,19 @@ export const personalCosts = [
 
 export const relocationCosts = [
     {
-        name: "Work Life",
+        name: "Career",
         categories: ["income loss", "job/skills training", "misc. fees"]
     },
     {
-        name: "Lodging",
-        categories: ["hotel rate", "expected length of stay"]
-    },
-    {
-        name: "New Home",
-        categories: ["housing deposit", "utilities deposits", "rent", "misc. fees"]
+        name: "Housing",
+        categories: ["hotel expenses ", "housing deposit", "utilities deposits", "rent", "misc. fees"]
     },
     {
         name: "Transportation",
         categories: ["car rental", "moving truck rental", "gas", "airline/bus tickets"]
     },
     {
-        name: "Miscellaneous Expenses",
+        name: "Miscellaneous",
         categories: ["storage Unit", "furniture/appliances", "pet expenses", "cell phone disconnection fees", "additional security measures"]
     }
 ];

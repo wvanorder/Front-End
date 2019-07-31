@@ -29,17 +29,16 @@ const InputLine = styled.div`
 
 
 const LineItem = props => {
-    console.log(props.recurringTotal);
 
     const [modalVisible, setModalVisible] = useState(false);
 
     const [categoryCosts, setCategoryCosts] = useState({});
 
   
+    
 
 
-
-    const handleRecurringOk = e => {
+    const handleRecurringOk = (e) => {
         e.preventDefault();
         props.updateRecurringTotal(categorySum);
         setModalVisible(false);
@@ -72,10 +71,11 @@ const LineItem = props => {
     
     
     
+    
     return(
         
         <>
-            <Item onClick={() => setModalVisible(!modalVisible)}>
+            <Item onClick={() => setModalVisible(!modalVisible)} value={categorySum} name={props.category.name}>
                 <h2>{props.category.name}</h2>
                 <h2>${categorySum}</h2>
             </Item>
@@ -88,7 +88,7 @@ const LineItem = props => {
             <h3>Things to consider: </h3>
                 {props.category.categories.map(category => {
                 return(
-                    <InputLine>
+                    <InputLine key={category}>
                         <p>{category}</p>
                         <input
                             type="number"
