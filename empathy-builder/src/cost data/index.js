@@ -9,7 +9,7 @@ export const personalCosts = [
     },
     {
         name: "Health",
-        categories: ['Insurance', 'Copays', 'Prescriptions', 'Medical Equipment', 'Therapy', 'Childcare'],
+        categories: ['Insurance', 'Copays', 'Prescriptions & Medical Equipment', 'Therapy', 'Childcare'],
     },
     {
         name: 'Debt',
