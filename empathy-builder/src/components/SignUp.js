@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
+import { signup } from '../actions';
+
 
 import { PageContainer, 
     LoginContainer, 
@@ -49,6 +51,18 @@ const SignUp = props => {
             [e.target.name]: e.target.value,
          })
     }
+
+    const signup = e => {
+        e.preventDefault();
+        if(!newUser.username || !newUser.password || !newUser.email){
+            return alert('Please fill out all the fields to sign up.')
+        } else {
+            props.signup(newUser)
+            .then(res => {
+                console.log(res);
+            })
+        }
+    }
     
     return(
         <PageContainer>
@@ -58,7 +72,7 @@ const SignUp = props => {
                     <p>Signing up is optional, and allows you to save your exit strategies. We will never provide anyone else your information.</p>
                 </LoginHeader>
                 <SignUpForm>
-                    <form>
+                    <form onSubmit={signup}>
                         <SignUpInputs>
                         <label>Username</label>
                                 <input
@@ -66,6 +80,8 @@ const SignUp = props => {
                                     placeholder="username"
                                     required="fill this out!"
                                     name="username"
+                                    value={newUser.username}
+                                    onChange={handleChange}
                                 />
                                 <label>Password</label>
                                 <input
@@ -73,6 +89,8 @@ const SignUp = props => {
                                     placeholder="password"
                                     required="fill this out!"
                                     name="password"
+                                    value={newUser.password}
+                                    onChange={handleChange}
                                 />
                                 <label>Email</label>
                                 <input
@@ -80,10 +98,12 @@ const SignUp = props => {
                                     placeholder="email"
                                     required="fill this out!"
                                     name="email"
+                                    value={newUser.email}
+                                    onChange={handleChange}
                                 />
                         </SignUpInputs>
                     </form>
-                    <button className="Login-button">Sign Up</button>
+                    <button className="Login-button" onClick={signup}>Sign Up</button>
                 </SignUpForm>
                 
             </SignUpContainer>
@@ -95,7 +115,11 @@ const SignUp = props => {
 
 const mapStateToProps = state => {
     return{
-        weather: state.weather
+       error: state.error,
+       loggingIn: state.loggingIn
     }
 }
-export default SignUp;
+export default connect(
+    mapStateToProps,
+    { signup }
+)(SignUp);
