@@ -55,11 +55,11 @@ const Calculator = props => {
     
     const [recurringCategoryTotals, setRecurringCategoryTotals] = useState({
         Food: 0,
-        Transportation: 0,
+        Car: 0,
         Health: 0,
         Debt: 0,
         Housing: 0,
-        Utilities: 0,
+        Bills: 0,
         Clothing: 0
     });
 

@@ -4,7 +4,7 @@ export const personalCosts = [
         categories: ['Groceries', 'Restaurants/Takeout']
     },
     {
-        name: "Transportation",
+        name: "Car",
         categories: ['Car Insurance', 'Car Payment', 'Gas', 'Parking', 'Public Transit'],
     },
     {
@@ -20,7 +20,7 @@ export const personalCosts = [
         categories: ['Rent', 'Deposit'],
     },
     {
-        name: 'Utilities',
+        name: 'Bills',
         categories: ['Electricity', 'Gas', 'Water', 'Phone/mobile', 'Internet', 'Cable'],
     },
     {
