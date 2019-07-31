@@ -1,6 +1,7 @@
 import {
     LOGIN_START,
     LOGIN_SUCCESS,
+    SIGNUP,
 } from '../actions';
 
 //DUMMY DATA used to explain Store and action stuff to teammates
@@ -27,8 +28,16 @@ const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 user: action.payload.user,
+                loggedIn: true,
                 isLoading: false,
-                error: action.payload.error
+                error: ''
+            }
+        case SIGNUP:
+            return{
+                ...state,
+                error: '',
+                loggingIn: false,
+                user: '',
             }
         
         default:

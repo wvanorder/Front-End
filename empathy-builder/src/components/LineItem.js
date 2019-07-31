@@ -29,7 +29,6 @@ const InputLine = styled.div`
 
 
 const LineItem = props => {
-    console.log(props.sum);
 
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -43,7 +42,6 @@ const LineItem = props => {
         e.preventDefault();
         props.updateRecurringTotal(categorySum);
         setModalVisible(false);
-        props.sum = categorySum;
       };
 
     const handleRelocationOk = e => {
@@ -73,6 +71,7 @@ const LineItem = props => {
     
     
     
+    
     return(
         
         <>
@@ -89,7 +88,7 @@ const LineItem = props => {
             <h3>Things to consider: </h3>
                 {props.category.categories.map(category => {
                 return(
-                    <InputLine>
+                    <InputLine key={category}>
                         <p>{category}</p>
                         <input
                             type="number"
