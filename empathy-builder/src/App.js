@@ -19,7 +19,6 @@ function App() {
       <Route exact path="/login" render={props => <Login {...props}/>} />
       <Route exact path ="/sign-up" render={props => <SignUp {...props} />} />
       <Route exact path ="/learn" render={props => <LearnMore {...props} />} />
-
     </div>
   );
 }
