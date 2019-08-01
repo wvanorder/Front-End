@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from "./Footer";
 
-
+/*phantom div to allocate layout space for the navbar*/
 const phantom = {
   display: 'block',
   padding: '3rem',

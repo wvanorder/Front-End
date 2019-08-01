@@ -1,32 +1,21 @@
 import React from 'react';
-import { SignUp, Login, LearnMore, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Footer from './Footer';
+import Login from './Login';
+import SignUp from './SignUp';
+
 
 import '../App.css';
 import styled from "styled-components";
 import Calculator from "./Calculator";
 
-/*
-const Button = styled.a`
-  /!* This renders the buttons above... Edit me! *!/
-  display: inline-block;
-  border-radius: 8px;
-  padding: 0.8rem 2rem;
-  margin: 0.8rem 1.4rem;
-  width: auto;
-  background: #654EB0;        
-    &:hover{
-            background-color: DarkOrchid;
-            transition-duration: 0.2s; }
-  font-size: 1.6rem;  
-  border: 2px solid #654EB0;
-      &:hover{
-            border-color: none;
-            transition-duration: 0.2s; }
-  box-shadow: 0px 10px 14px -7px #654eb0;
-  color: white;
-`;
-*/
+/*phantom div to allocate layout space for the navbar*/
+const phantom = {
+  display: 'block',
+  padding: '3rem',
+  height: '60px',
+  width: '100%',
+};
 
 const Welcome = styled.div`
     padding: 5rem;
@@ -40,11 +29,12 @@ const PageContainer = styled.div `
 
 const Image = styled.img`
 background-color: white;
+height: 60%;
 `;
 
 const H1 = styled.h1`
     font-size: 3rem;
-    padding: 3rem;
+
 `;
 
 const H3 =styled.h3`
@@ -61,12 +51,14 @@ export default function WelcomePage() {
   return (
     <PageContainer>
       <Welcome>
+        <Header/>
+
           <div>
            <Image src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/reading_0re1.svg"
-              alt="rick"/>
+              alt="woman reading"/>
           </div>
-        <div>
-          <Header><H1>Welcome to Empathy Builder</H1></Header>
+        <div style={phantom}>
+
         </div>
         <div>
           <H3>Definition, thought and rise. Everything we do is connected with suffering: booda-hood, surrender,

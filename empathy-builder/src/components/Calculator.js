@@ -19,7 +19,9 @@ const CalcPage = styled.div`
 const Results = styled.div`
     width: 80vw;
     height: 80px;
-    background-color: tomato;
+    //background-color: #DB6AA7;
+    background-color: #6DFACC;
+    border: 1px solid #66ccda;
     border-radius: 5px;
     h2{
         color: white;
@@ -38,16 +40,34 @@ const Column = styled.div`
     width: 45%;
     max-width: 600px;
     height: 800px;
-    background-color: #59B7FF;
+    background-color: mediumpurple;
     border-radius: 5px;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     h2{
         font-size: 2.7rem;
-        color: #ededed;
+        color: white;
+    }
+    h3{
+        font-size: 2.5rem;
+        color: #654EB0;
+    }
+    h4{
+        font-size: 2rem;
+        color: white;
     }
     
+`
+
+const SubtotalStyle = styled.div `
+    //background-color: #DB6AA7;
+    background-color: #6DFACC;
+    border: 1px solid #66ccda;
+    border-radius: 5px;
+    padding: 1.2rem 3rem;
+    width: 90%;
+    height: auto;
 `
 
 
@@ -102,7 +122,7 @@ const Calculator = props => {
                         return <LineItem key={category.name} category={category} updateRecurringTotal={updateRecurringTotal} 
                             />
                     })}
-                    <h3>Total Recurring Expenses: ${recurringTotal}</h3>
+                    <SubtotalStyle><h4>Total Recurring Expenses: ${recurringTotal}</h4></SubtotalStyle>
                 </Column>
                 <Column>
                     <h2>My Relocation Expenses</h2>
@@ -110,7 +130,7 @@ const Calculator = props => {
                         return <LineItem key={category.name} category={category} updateRelocationTotal={updateRelocationTotal} 
                             />
                     })}
-                    <h3>Total Relocation Expenses: ${Math.floor(relocationTotal)}</h3>
+                    <SubtotalStyle><h4>Total Relocation Expenses: ${Math.floor(relocationTotal)}</h4></SubtotalStyle>
                 </Column>
             </CalculatorHolder>
         </CalcPage>
