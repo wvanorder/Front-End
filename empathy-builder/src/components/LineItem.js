@@ -3,7 +3,7 @@ import { Modal } from 'antd';
 import styled from 'styled-components';
 
 
-const Item = styled.div`
+/*const Item = styled.div`
     width: 90%;
     height: auto;
     background-color: #66ccda;
@@ -18,7 +18,27 @@ const Item = styled.div`
         background-color: #9ddee7;
         transition-duration: 0.2s;
     }
+`*/
+
+const Item = styled.div`
+    width: 90%;
+    height: auto;
+    //background-color: #D1FEF6;
+    background-color: #f9bbb1;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 5px 5px;
+    border-radius: 4px;
+    text-align: left;
+    &:hover{
+        background-color: #FEBAED;
+        transition-duration: 0.2s;
+    }
 `
+
+
 
 const InputLine = styled.div`
     display: flex;
