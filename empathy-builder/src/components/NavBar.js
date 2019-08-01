@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const NavContainer = styled.div`
     width: 100%;
     height: 75px;
-    background-color: #602350;
+    background-color: #654EB0;
     position: fixed;
     z-index: 10000;
 `
@@ -32,7 +32,7 @@ const NavLogo = styled.div`
 const Links = styled.div`
     .active{
         font-weight: bold;
-        text-decoration: underline;
+        text-decoration: none;
         color: #f9bbb1;
     }
 
@@ -42,40 +42,45 @@ const Links = styled.div`
         font-size: 1.4rem;
         text-decoration: none;
         &:hover{
-            color: #F9BBB1
+            color: #AFF3C1;
             transition-duration: 0.2s;
+            text-decoration: underline;
         }
     }
 `
 
 const NavBar = () => {
 
-    const logOut = () => {
-        return localStorage.clear();
-      };
-    
-    return(
-        <NavContainer>
-            <NavigationBar>
-                <NavLogo>Empathy Builder</NavLogo>
-                <Links>
-                    {localStorage.getItem('jwt') ? (
-                        <div>
-                            <NavLink to='/login' onClick={logOut}>Log Out</NavLink>
-                            <NavLink to="/calculator">Calculator</NavLink>
-                        </div>
-                        
-                    ) : (
-                        <div>
-                            <NavLink to="/calculator">Calculator</NavLink>
-                            <NavLink to='/login'>Log In</NavLink>
-                            <NavLink to='/sign-up'>Sign Up</NavLink>
-                        </div>
-                    )}
-                </Links>
-            </NavigationBar>
-        </NavContainer>
-    );
+  const logOut = () => {
+    return localStorage.clear();
+  };
+
+  return(
+    <NavContainer>
+      <NavigationBar>
+        <NavLogo>Empathy Builder</NavLogo>
+        <Links>
+          {localStorage.getItem('jwt') ? (
+            <div>
+              <NavLink to='/login' onClick={logOut}>Log Out</NavLink>
+              <NavLink to="/calculator">Calculator</NavLink>
+            </div>
+
+          ) : (
+            <div>
+              <NavLink exact to="/">Welcome</NavLink>
+              <NavLink to="/calculator">Calculator</NavLink>
+              <NavLink to='/login'>Log In</NavLink>
+              <NavLink to='/signup'>Sign Up</NavLink>
+              <NavLink to="/learn">Learn More</NavLink>
+
+
+            </div>
+          )}
+        </Links>
+      </NavigationBar>
+    </NavContainer>
+  );
 };
 
 export default NavBar;
