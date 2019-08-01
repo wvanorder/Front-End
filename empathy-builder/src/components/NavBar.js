@@ -32,7 +32,7 @@ const NavLogo = styled.div`
 const Links = styled.div`
     .active{
         font-weight: bold;
-        text-decoration: underline;
+        text-decoration: none;
         color: #f9bbb1;
     }
 
@@ -42,8 +42,9 @@ const Links = styled.div`
         font-size: 1.4rem;
         text-decoration: none;
         &:hover{
-            color: #F9BBB1
+            color: #AFF3C1;
             transition-duration: 0.2s;
+            text-decoration: underline;
         }
     }
 `
@@ -70,7 +71,7 @@ const NavBar = () => {
               <NavLink exact to="/">Welcome</NavLink>
               <NavLink to="/calculator">Calculator</NavLink>
               <NavLink to='/login'>Log In</NavLink>
-              <NavLink to='/sign-up'>Sign Up</NavLink>
+              <NavLink to='/signup'>Sign Up</NavLink>
               <NavLink to="/learn">Learn More</NavLink>
 
 
