@@ -5,9 +5,9 @@ export const PageContainer = styled.div`
 `
 
 export const LoginContainer = styled.div`
-    min-width: 500px;
+    min-width: auto;
     width: 70vw;
-    max-width: 800px;
+    max-width: auto;
     height: auto;
     background-color: #ededed;
     border-radius: 15px;
@@ -26,7 +26,7 @@ export const LoginHeader = styled.div`
     align-items: center;
 
     h1{
-        font-size: 2.6rem;
+        font-size: 1.6rem;
         margin: 0;
         color: #602350;
     }
@@ -40,9 +40,9 @@ export const FormContainer = styled.div`
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-evenly;
-
+ 
     button{
-        width: 60px;
+        width: 2rem;
         border-radius: 8px;
         background-color: #66ccda;
         margin-left: 15px;
