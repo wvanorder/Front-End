@@ -1,17 +1,19 @@
 import React from 'react';
-import { SignUp, Login, LearnMore } from 'react-router-dom';
+import { SignUp, Login, LearnMore, Link } from 'react-router-dom';
 import Footer from './Footer';
 
 import '../App.css';
 import styled from "styled-components";
+import Calculator from "./Calculator";
 
+/*
 const Button = styled.a`
-  /* This renders the buttons above... Edit me! */
+  /!* This renders the buttons above... Edit me! *!/
   display: inline-block;
-  border-radius: 1.6px;
-  padding: 0.8rem 0;
+  border-radius: 8px;
+  padding: 0.8rem 2rem;
   margin: 0.8rem 1.4rem;
-  width: 11rem;
+  width: auto;
   background: #654EB0;        
     &:hover{
             background-color: DarkOrchid;
@@ -24,6 +26,8 @@ const Button = styled.a`
   box-shadow: 0px 10px 14px -7px #654eb0;
   color: white;
 `;
+*/
+
 const Welcome = styled.div`
     padding: 5rem;
     background-color: white;
@@ -70,8 +74,8 @@ export default function WelcomePage() {
           </H3>
         </div>
         <div className='BtnGroup'>
-          <Button primary>I'm curious</Button>
-          <Button>I'm Ready</Button>
+          <button><Link to={"Calculator"} className="link">Anonymous Mode</Link></button>
+          <button><Link to={"SignUp"} className="link">Account SignUp</Link></button>
         </div>
 
         <div>
