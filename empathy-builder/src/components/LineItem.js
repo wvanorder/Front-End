@@ -28,6 +28,7 @@ const InputLine = styled.div`
 
 
 const LineItem = props => {
+    console.log('line props: ', props.userId)
 
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -36,6 +37,7 @@ const LineItem = props => {
     const handleModal = (e) => {
         e.preventDefault();
         setModalVisible(false);
+        props.updateTotals(props.category.name, props.userId, categorySum);
       };
 
     const handleCancel = e => {
@@ -62,8 +64,6 @@ const LineItem = props => {
             [props.category.name]: categorySum
         })
         }, [categorySum])
-
-    console.log(props)
 
     return(
         

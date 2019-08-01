@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { updateTotals } from '../actions';
 import styled from 'styled-components';
 
 import LineItem from './LineItem';
@@ -51,7 +53,10 @@ const Column = styled.div`
 `
 
 
+
+
 const Calculator = props => {
+    console.log('Calculator props:', props);
     
     const [recurringCategoryTotals, setRecurringCategoryTotals] = useState({
         Food: 0,
@@ -88,8 +93,13 @@ const Calculator = props => {
                 <Column>
                     <h2>My Recurring Expenses</h2>
                     {personalCosts.map(category => {
-                        return <LineItem key={category.name} categoryTotals={recurringCategoryTotals} setCategoryTotals={setRecurringCategoryTotals} category={category}
-                            />
+                        return <LineItem key={category.name} 
+                                    categoryTotals={recurringCategoryTotals} 
+                                    setCategoryTotals={setRecurringCategoryTotals} 
+                                    category={category}
+                                    updateTotals={props.updateTotals}
+                                    userId={props.userId}
+                                />
                     })}
                     <h3>Total Recurring Expenses: ${recurringCalcTotal}</h3>
                 </Column>
@@ -107,4 +117,16 @@ const Calculator = props => {
     );
 };
 
-export default Calculator;
+const mapStateToProps = state => {
+    return{
+        userId: state.userId,
+        loggedIn: state.loggedIn,
+        error: state.error,
+        isLoading: state.isLoading,
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    { updateTotals } 
+)(Calculator);
